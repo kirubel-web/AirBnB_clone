@@ -1,12 +1,12 @@
 #!/usr/bin/python3
-""" Base Model common attributes/methods."""
+""" This is a  Base Model common attributes/methods. for Airbnb project"""
 from uuid import uuid4
 from datetime import datetime
 import models
 
 
 class BaseModel:
-    """ BaseModel of the AirBnB project. """
+    """This is a class  BaseModel of the AirBnB project. """
 
     def __init__(self, *args, **kwargs):
         """
