@@ -8,7 +8,7 @@ This is the first step towards building your first full web application: the Air
 
 The console is a command line interpreter that permits management of the backend of AirBnB. It can be used to handle and manipulate all classes utilized by the application.
 
-### Using the Console
+### Usingage
 
 The AirBnB console can be run both interactively and non-interactively.
 To run the console in non-interactive mode, pipe any command(s) into an execution
