@@ -10,11 +10,7 @@ class BaseModel:
 
     def __init__(self, *args, **kwargs):
         """
-        Init BaseModel.
-
-        Args:
-            *args (any): Won't be used.
-            **kwargs (dict): Key/Value pairsof the attributes.
+        init BaseModel.
         """
         self.id = str(uuid4())
         self.created_at = datetime.today()
@@ -37,8 +33,7 @@ class BaseModel:
 
     def to_dict(self):
         """
-        Returns a dictionary containing all keys/values of
-        __dict__ of the instance.
+        returns a dictionary containing all keys/values.
         """
         rdict = self.__dict__.copy()
         rdict["__class__"] = self.__class__.__name__
@@ -49,7 +44,7 @@ class BaseModel:
 
     def save(self):
         """
-        Updates the public instance attribute updated_at
+        save the  attribute updated_at
         with the current datetime.
         """
         self.updated_at = datetime.today()
