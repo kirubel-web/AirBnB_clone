@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Defines entry point of the command interpreter."""
+""" The command interpreter."""
 import cmd
 import re
 from shlex import split
@@ -72,30 +72,18 @@ class HBNBCommand(cmd.Cmd):
         print("*** Unknown syntax: {}".format(arg))
         return False
 
-    def do_quit(self, args):
-        """ Quit command to exit. """
-        return True
-
     def do_EOF(self, arg):
         """ EOF signal to exit the program."""
         print("")
         return True
 
+    def do_quit(self, args):
+        """ Quit command to exit. """
+        return True
+
     def emptyline(self):
         """ Nothing done when recieving an empty line"""
         pass
-
-    def do_create(self, arg):
-        """ Creates a new instance of BaseModel, saves it."""
-        argl = parse(arg)
-
-        if len(argl) == 0:
-            print("** class name missing **")
-        elif argl[0] not in HBNBCommand.__classes:
-            print("** class doesn't exist **")
-        else:
-            print(eval(argl[0])().id)
-            storage.save()
 
     def do_show(self, arg):
         """
@@ -132,6 +120,18 @@ class HBNBCommand(cmd.Cmd):
             del objd["{}.{}".format(argl[0], argl[1])]
             storage.save()
 
+    def do_create(self, arg):
+        """ Creates a new instance of BaseModel, saves it."""
+        argl = parse(arg)
+
+        if len(argl) == 0:
+            print("** class name missing **")
+        elif argl[0] not in HBNBCommand.__classes:
+            print("** class doesn't exist **")
+        else:
+            print(eval(argl[0])().id)
+            storage.save()
+
     def do_all(self, arg):
         """
         Prints all string representation of all instances based.
@@ -149,6 +149,16 @@ class HBNBCommand(cmd.Cmd):
                 elif len(argl) == 0:
                     objl.append(obj.__str__())
             print(objl)
+
+    def do_count(self, arg):
+        """ Retrieve the number of instances of a class."""
+        argl = parse(arg)
+        count = 0
+
+        for obj in storage.all().values():
+            if argl[0] == obj.__class__.__name__:
+                count += 1
+        print(count)
 
     def do_update(self, arg):
         """
@@ -204,16 +214,6 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     obj.__dict__[index] = jndex
         storage.save()
-
-    def do_count(self, arg):
-        """ Retrieve the number of instances of a class."""
-        argl = parse(arg)
-        count = 0
-
-        for obj in storage.all().values():
-            if argl[0] == obj.__class__.__name__:
-                count += 1
-        print(count)
 
 
 if __name__ == '__main__':
