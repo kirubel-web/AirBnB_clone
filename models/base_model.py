@@ -34,14 +34,6 @@ class BaseModel:
         class_name = self.__class__.__name__
         return "[{}] ({}) {}".format(class_name, self.id, self.__dict__)
 
-    def save(self):
-        """
-        Updates the public instance attribute updated_at
-        with the current datetime.
-        """
-        self.updated_at = datetime.today()
-        models.storage.save()
-
     def to_dict(self):
         """
         Returns a dictionary containing all keys/values of
@@ -53,3 +45,11 @@ class BaseModel:
         rdict["updated_at"] = self.updated_at.isoformat()
 
         return rdict
+
+    def save(self):
+        """
+        Updates the public instance attribute updated_at
+        with the current datetime.
+        """
+        self.updated_at = datetime.today()
+        models.storage.save()
