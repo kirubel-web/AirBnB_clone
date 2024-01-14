@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """ This is a  Base Model common attributes/methods. for Airbnb project"""
+import models
 from uuid import uuid4
 from datetime import datetime
-import models
 
 
 class BaseModel:
