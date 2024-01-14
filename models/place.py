@@ -1,24 +1,24 @@
 #!/usr/bin/python3
-""" Defines class Place."""
+"""Class Place."""
 from models.base_model import BaseModel
 
 
 class Place(BaseModel):
     """
-    Represents Place class.
+    Place class.
 
-    Attributes:
-        city_id (str): The City object id.
-        user_id (str): The user id.
-        name (str): The name of the Place objet.
-        description (str): Description about the place.
-        number_rooms (int): The number of rooms.
-        number_bathrooms (int): The number of bathrooms.
-        max_guest (int): The number of maximum guest place can hold.
-        price_by_night (int): The price of the night time.
-        latitude (float): The latitude of the place.
-        longitude (float): The longitude of the place.
-        amenity_ids (list): The id of the amenity object id.
+    Attr:
+        city_id (str)
+        user_id (str)
+        number_bathrooms (int)
+        max_guest (int)
+        name (str)
+        description (str)
+        number_rooms (int)
+        price_by_night (int)
+        latitude (float)
+        longitude (float)
+        amenity_ids (list)
     """
     city_id = ""
     user_id = ""
