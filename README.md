@@ -55,4 +55,4 @@ $
 ```
 
 ## Authors
-* **Kirube Alemu** <[ShagizMan](https://github.com/kirubel-web)>
+* **Kirube Alemu** <[kirubel-web](https://github.com/kirubel-web)>
