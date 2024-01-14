@@ -46,6 +46,6 @@ class FileStorage:
                 for i in objdict.values():
                     cls_name = i["__class__"]
                     del i["__class__"]
-                    self.new(eval(cls_name)(**o))
+                    self.new(eval(cls_name)(**i))
         except FileNotFoundError:
             return
