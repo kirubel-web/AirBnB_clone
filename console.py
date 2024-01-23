@@ -12,6 +12,22 @@ from models.review import Review
 from models.state import State
 from models.user import User
 
+def parse(arg):
+        curly_braces = re.search(r"\{(.*?)\}", arg)
+        brackets = re.search(r"\[(.*?)\]", arg)
+        if curly_braces is None:
+            if brackets is None:
+                return [index.strip(",") for index in split(arg)]
+            else:
+                lexer = split(arg[:brackets.span()[0]])
+                retl = [index.strip(",") for index in lexer]
+                retl.append(brackets.group())
+                return retl
+        else:
+            lexer = split(arg[:curly_braces.span()[0]])
+            retl = [index.strip(",") for index in lexer]
+            retl.append(curly_braces.group())
+            return retl
 
 class HBNBCommand(cmd.Cmd):
     """
@@ -54,22 +70,6 @@ class HBNBCommand(cmd.Cmd):
         print("*** Unknown syntax: {}".format(arg))
         return False
 
-    def parse(arg):
-        curly_braces = re.search(r"\{(.*?)\}", arg)
-        brackets = re.search(r"\[(.*?)\]", arg)
-        if curly_braces is None:
-            if brackets is None:
-                return [index.strip(",") for index in split(arg)]
-            else:
-                lexer = split(arg[:brackets.span()[0]])
-                retl = [index.strip(",") for index in lexer]
-                retl.append(brackets.group())
-                return retl
-        else:
-            lexer = split(arg[:curly_braces.span()[0]])
-            retl = [index.strip(",") for index in lexer]
-            retl.append(curly_braces.group())
-            return retl
 
     def do_EOF(self, arg):
         """ EOF signal to exit the program."""
